@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Logo from './Logo';
 
 const Header = styled.header.attrs({
-  className: 'App-header'
+  className: 'app-header'
 })`
   background-color: #222;
   height: 150px;
@@ -13,7 +13,7 @@ const Header = styled.header.attrs({
 
 export default () => {
   return (
-    <Header className="App-header">
+    <Header>
       <Logo />
       <h1 className="App-title">Welcome to React</h1>
     </Header>

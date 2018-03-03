@@ -2,9 +2,9 @@ import { BucketDispatcher } from '../dispatchers';
 import { uniqueId } from 'lodash';
 
 
-export const addBucket = name => {
+const addBucket = name => {
   BucketDispatcher.dispatch({
-    type: ADD_NEW_BUCKET,
+    type: 'ADD_NEW_BUCKET',
     bucket: {
       id: uniqueId(),
       tasks: [],
@@ -13,9 +13,14 @@ export const addBucket = name => {
   });
 }
 
-export const removeBucket = bucket => {
+const removeBucket = bucket => {
   BucketDispatcher.dispatch({
-    type: REMOVE_BUCKET,
+    type: 'REMOVE_BUCKET',
     bucket
   });
+}
+
+export default {
+  addBucket,
+  removeBucket
 }

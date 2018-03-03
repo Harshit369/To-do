@@ -7,7 +7,7 @@ let buckets = [];
 class BucketStore extends EventEmitter {
   constructor() {
     super();
-    BucketDispatcher.register(actionListener);
+    BucketDispatcher.register(this.actionListener);
   }
 
   actionListener(action) {
@@ -28,7 +28,7 @@ class BucketStore extends EventEmitter {
   }
 
   removeBucket(bucket) {
-    _.remove(buckets, id => id === bucket.id);
+    remove(buckets, id => id === bucket.id);
     this.emit('change');
   }
 

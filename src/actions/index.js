@@ -1,2 +1,2 @@
-export { default as BucketAction } from './bucket';
-export { default as TaskAction } from './task';
+export { default as BucketActions } from './bucket';
+export { default as TaskActions } from './task';
