@@ -25,9 +25,11 @@ class Todo extends Component {
   }
 
   render() {
-    const buckets = this.state.buckets.map((bucket) => <Bucket />);
+    const buckets = this.state.buckets.map((bucket) => <Bucket bucket={bucket} />);
     return (
-      <TodoContainer></TodoContainer>
+      <TodoContainer>
+        {buckets}
+      </TodoContainer>
     );
   }
 }
