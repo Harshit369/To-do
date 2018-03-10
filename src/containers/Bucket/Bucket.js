@@ -3,21 +3,31 @@ import styled from 'styled-components';
 import BucketOptions from './BucketOptions';
 import { BucketStore } from '../../stores';
 import Task from '../Task'
+import { BucketContainer } from '../../components';
 
-const BucketContainer = styled.div`
-  width: 300px;
-  max-width: 30%;
+const StyledBucket = BucketContainer.extend`
   display: flex;
   flex-direction: column;
-  .bucket-header {
-    text-align: center;
-    flex-shrink: 0;
-  }
-  .bucket-body {
-
-  }
 `;
 
+const BucketHeader = styled.div.attrs({
+  className: 'bucket-header'
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  text-align: center;
+  flex-shrink: 0;
+`;
+
+const BucketBody = styled.div.attrs({
+  className: 'bucket-body'
+})`
+  display: flex;
+  height: 100%;
+  flex-shrink: 1;
+`;
 
 class Bucket extends Component {
   removeBucket = () => {
@@ -25,16 +35,19 @@ class Bucket extends Component {
   }
 
   render() {
-    const { name, id, tasks } = this.props;
+    debugger;
+    const { name, id, tasks } = this.props.bucket;
     const taskList = tasks.map((task) => <Task />);
     return (
-      <BucketContainer key={id}>
-        <div className="bucket-header">{name}</div>
-        <div className="bucket-body">
+      <StyledBucket>
+        <BucketHeader>{name}</BucketHeader>
+        <BucketBody>
           <BucketOptions onRemove={this.removeBucket} />
           <div className="bucket-task-list">{taskList}</div>
-        </div>
-      </BucketContainer>
+        </BucketBody>
+      </StyledBucket>
     )
   }
 }
+
+export default Bucket;

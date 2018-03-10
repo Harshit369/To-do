@@ -8,14 +8,19 @@ const IconWrapper = styled.div.attrs({
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #ededed;
+
+  .icon {
+    color #ededed;
+  }
 `;
 
 export default (props) => {
   return (
     <IconWrapper {...props}>
-      <i className={'material-icons ' + (props.className || '')}>{props.icon}</i>
+      <i className={'icon material-icons ' + (props.className || '')}>{props.icon}</i>
     </IconWrapper>
   );
 }

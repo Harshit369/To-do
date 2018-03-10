@@ -7,19 +7,13 @@ let buckets = [];
 class BucketStore extends EventEmitter {
   constructor() {
     super();
-    BucketDispatcher.register(this.actionListener);
-  }
-
-  actionListener(action) {
-    switch (action.type) {
-      case 'ADD_NEW_BUCKET':
+    BucketDispatcher.register((action) => {
+      if (action.type === 'ADD_NEW_BUCKET') {
         this.addBucket(action.bucket);
-        break;
-
-      case 'REMOVE_BUCKET':
+      } else if (action.type === 'ADD_NEW_BUCKET') {
         this.removeBucket(action.bucket);
-        break;
-    }
+      }
+    });
   }
 
   addBucket(bucket) {
