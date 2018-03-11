@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import BucketContainer from './BucketContainer';
 
-console.log(BucketContainer);
-
 const AddBucketContainer = BucketContainer.extend`
 	display: flex;
 	align-items: center;
@@ -12,7 +10,6 @@ const AddBucketContainer = BucketContainer.extend`
 `;
 
 export default ({ onClick }) => {
-	console.log(onClick);
 	return (
 		<AddBucketContainer className="add-bucket">
 			<div className="" onClick={onClick}>ADD</div>

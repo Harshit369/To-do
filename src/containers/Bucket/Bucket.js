@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import BucketOptions from './BucketOptions';
-import { BucketStore } from '../../stores';
+import { BucketActions } from '../../actions';
 import Task from '../Task'
 import { BucketContainer } from '../../components';
 
@@ -31,11 +31,11 @@ const BucketBody = styled.div.attrs({
 
 class Bucket extends Component {
   removeBucket = () => {
-    BucketStore.removeBucket(this.props.bucket);
+    debugger;
+    BucketActions.removeBucket(this.props.bucket);
   }
 
   render() {
-    debugger;
     const { name, id, tasks } = this.props.bucket;
     const taskList = tasks.map((task) => <Task />);
     return (

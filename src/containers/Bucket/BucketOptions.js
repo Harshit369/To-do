@@ -12,6 +12,7 @@ const ButtonsWrapper = styled.div`
 `
 
 export default ({ onRemove }) => {
+  debugger;
   return (
     <ButtonsWrapper>
       <RoundIcon onClick="" icon="add" />

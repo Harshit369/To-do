@@ -36,6 +36,7 @@ class Todo extends Component {
 
   componentDidMount() {
     BucketStore.on('change', () => {
+      debugger;
       this.setState({
         buckets: BucketStore.getBuckets()
       })

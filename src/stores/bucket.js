@@ -10,7 +10,7 @@ class BucketStore extends EventEmitter {
     BucketDispatcher.register((action) => {
       if (action.type === 'ADD_NEW_BUCKET') {
         this.addBucket(action.bucket);
-      } else if (action.type === 'ADD_NEW_BUCKET') {
+      } else if (action.type === 'REMOVE_BUCKET') {
         this.removeBucket(action.bucket);
       }
     });
@@ -22,7 +22,8 @@ class BucketStore extends EventEmitter {
   }
 
   removeBucket(bucket) {
-    remove(buckets, id => id === bucket.id);
+    debugger;
+    remove(buckets, b => b.id === bucket.id);
     this.emit('change');
   }
 

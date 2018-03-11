@@ -14,6 +14,7 @@ const addBucket = name => {
 }
 
 const removeBucket = bucket => {
+  debugger;
   BucketDispatcher.dispatch({
     type: 'REMOVE_BUCKET',
     bucket
