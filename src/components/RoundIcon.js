@@ -20,7 +20,7 @@ const IconWrapper = styled.div.attrs({
 export default (props) => {
   return (
     <IconWrapper {...props}>
-      <i className={'icon material-icons ' + (props.className || '')}>{props.icon}</i>
+      <i className='icon material-icons '>{props.icon}</i>
     </IconWrapper>
   );
 }

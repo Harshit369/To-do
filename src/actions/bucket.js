@@ -14,14 +14,21 @@ const addBucket = name => {
 }
 
 const removeBucket = bucket => {
-  debugger;
   BucketDispatcher.dispatch({
     type: 'REMOVE_BUCKET',
     bucket
   });
 }
 
+const updateBucket = bucket => {
+  BucketDispatcher.dispatch({
+    type: 'UPDATE_BUCKET',
+    bucket
+  });
+}
+
 export default {
   addBucket,
-  removeBucket
+  removeBucket,
+  updateBucket
 }

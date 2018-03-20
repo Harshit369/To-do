@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import BucketOptions from './BucketOptions';
 import { BucketActions } from '../../actions';
 import Task from '../Task'
-import { BucketContainer } from '../../components';
+import { BucketContainer, EditContainer } from '../../components';
 
 const StyledBucket = BucketContainer.extend`
   display: flex;
   flex-direction: column;
+  .bucket-header {
+    height: 40px;
+  }
 `;
 
 const BucketHeader = styled.div.attrs({
@@ -30,19 +33,53 @@ const BucketBody = styled.div.attrs({
 `;
 
 class Bucket extends Component {
+  state = {
+    editable: false
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
   removeBucket = () => {
-    debugger;
     BucketActions.removeBucket(this.props.bucket);
+  }
+
+  toggleEditable = () => {
+    this.setState({
+      editable: !this.state.editable
+    })
+  }
+
+  updateName = (name) => {
+    BucketActions.updateBucket({
+      ...this.props.bucket,
+      name
+    });
+    this.setState({
+      editable: false
+    });
+  }
+
+  addTask = () => {
+    debugger;
   }
 
   render() {
     const { name, id, tasks } = this.props.bucket;
+    const { editable } = this.state;
     const taskList = tasks.map((task) => <Task />);
     return (
       <StyledBucket>
-        <BucketHeader>{name}</BucketHeader>
+        <EditContainer className="bucket-header" 
+          editable={editable} value={name}
+          onUpdate={this.updateName}
+          onCancel={() => this.setState({editable: false})}>
+        </EditContainer>
         <BucketBody>
-          <BucketOptions onRemove={this.removeBucket} />
+          <BucketOptions onRemove={this.removeBucket}
+            addTask={this.addTask}
+            editBucket={this.toggleEditable} />
           <div className="bucket-task-list">{taskList}</div>
         </BucketBody>
       </StyledBucket>

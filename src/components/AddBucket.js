@@ -11,7 +11,7 @@ const AddBucketContainer = BucketContainer.extend`
 
 export default ({ onClick }) => {
 	return (
-		<AddBucketContainer className="add-bucket">
+		<AddBucketContainer className="add-bucket pointer">
 			<div className="" onClick={onClick}>ADD</div>
 		</AddBucketContainer>
 	);

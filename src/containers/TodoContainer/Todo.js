@@ -15,6 +15,9 @@ const TodoContainer = styled.div.attrs({
 `;
 
 class Todo extends Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     buckets: BucketStore.getBuckets()
   }
@@ -25,7 +28,6 @@ class Todo extends Component {
 
   render() {
     const buckets = this.state.buckets.map((bucket, index) => <Bucket bucket={bucket} key={index} />);
-    debugger;
     return (
       <TodoContainer>
         {buckets}
@@ -36,7 +38,6 @@ class Todo extends Component {
 
   componentDidMount() {
     BucketStore.on('change', () => {
-      debugger;
       this.setState({
         buckets: BucketStore.getBuckets()
       })

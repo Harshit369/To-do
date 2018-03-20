@@ -12,6 +12,9 @@ const AppContainer = styled.div.attrs({
 `;
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+  }
   render() {
     return (
       <AppContainer>

@@ -17,3 +17,7 @@ body {
   font-size: large;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
