@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Input = styled.input.attrs({
   type: 'text',
 })`
+  padding: 8px;
   height: 100%;
   width: 100%;
   outline: none;

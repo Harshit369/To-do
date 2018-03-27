@@ -11,19 +11,20 @@ const TodoContainer = styled.div.attrs({
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding 16px; 
+  padding: 16px; 
 `;
 
 class Todo extends Component {
   constructor(props) {
     super(props);
   }
+
   state = {
     buckets: BucketStore.getBuckets()
   }
 
   addBucket = () => {
-    BucketActions.addBucket('Untitled new');
+    BucketActions.addBucket();
   }
 
   render() {

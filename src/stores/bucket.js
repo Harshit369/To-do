@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { BucketDispatcher } from '../dispatchers';
-import { remove, findIndex } from 'lodash';
+import { remove, findIndex, find } from 'lodash';
 
 let buckets = [];
 
@@ -14,6 +14,12 @@ class BucketStore extends EventEmitter {
         this.removeBucket(action.bucket);
       } else if (action.type === 'UPDATE_BUCKET') {
         this.updateBucket(action.bucket);
+      } else if (action.type === 'ADD_NEW_TASK') {
+        this.addNewTask(action.bucketId, action.task);
+      } else if (action.type === 'UPDATE_TASK') {
+        this.updateTask(action.bucketId, action.task);
+      } else if (action.type === 'DELETE_TASK') {
+        this.deleteTask(action.bucketId, action.task);
       }
     });
   }
@@ -31,6 +37,26 @@ class BucketStore extends EventEmitter {
   updateBucket(bucket) {
     let index = findIndex(buckets, ['id', bucket.id]);
     buckets[index] = bucket;
+    this.emit('change');
+  }
+
+  addNewTask(bucketId, task) {
+    let bucketToChange = find(buckets, ['id', bucketId]);
+    bucketToChange.tasks.push(task);
+    this.emit('change');
+  }
+
+  updateTask(bucketId, task) {
+    let bucketToChange = find(buckets, ['id', bucketId]);
+    let TaskIndex = findIndex(bucketToChange.tasks, ['id', task.id]);
+    bucketToChange.tasks[TaskIndex] = task;
+    this.emit('change');
+  }
+
+  deleteTask(bucketId, task) {
+    let bucketToChange = find(buckets, ['id', bucketId]);
+    let TaskIndex = findIndex(bucketToChange.tasks, ['id', task.id]);
+    bucketToChange.tasks.splice(TaskIndex, 1);
     this.emit('change');
   }
 

@@ -1,8 +1,13 @@
 import { BucketDispatcher } from '../dispatchers';
 import { uniqueId } from 'lodash';
 
+const defaultTask = {
+  id: uniqueId(),
+  title: '',
+  createdOn: Date.now()
+}
 
-const addBucket = name => {
+const addBucket = (name='Untitled new') => {
   BucketDispatcher.dispatch({
     type: 'ADD_NEW_BUCKET',
     bucket: {
@@ -27,8 +32,35 @@ const updateBucket = bucket => {
   });
 }
 
+const addNewTask = (bucketId, task = defaultTask) => {
+  BucketDispatcher.dispatch({
+    type: 'ADD_NEW_TASK',
+    bucketId,
+    task
+  });
+}
+
+const updateTask = (bucketId, task) => {
+  BucketDispatcher.dispatch({
+    type: 'UPDATE_TASK',
+    bucketId,
+    task: { ...task, updatedOn: Date.now() }
+  });
+}
+
+const deleteTask = (bucketId, task) => {
+  BucketDispatcher.dispatch({
+    type: 'DELETE_TASK',
+    bucketId,
+    task: { ...task }
+  });
+}
+
 export default {
   addBucket,
   removeBucket,
-  updateBucket
+  updateBucket,
+  addNewTask,
+  updateTask,
+  deleteTask
 }

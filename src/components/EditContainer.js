@@ -7,6 +7,7 @@ const Wrapper = styled.div.attrs({
   className: 'edit-container-wrapper'
 })`
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 `;

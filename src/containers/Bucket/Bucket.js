@@ -10,18 +10,8 @@ const StyledBucket = BucketContainer.extend`
   flex-direction: column;
   .bucket-header {
     height: 40px;
+    align-items: center;
   }
-`;
-
-const BucketHeader = styled.div.attrs({
-  className: 'bucket-header'
-})`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  text-align: center;
-  flex-shrink: 0;
 `;
 
 const BucketBody = styled.div.attrs({
@@ -29,7 +19,12 @@ const BucketBody = styled.div.attrs({
 })`
   display: flex;
   height: 100%;
+  width: 100%;
   flex-shrink: 1;
+
+  .bucket-tasklist {
+    width: 100%;
+  }
 `;
 
 class Bucket extends Component {
@@ -62,13 +57,13 @@ class Bucket extends Component {
   }
 
   addTask = () => {
-    debugger;
+    BucketActions.addNewTask(this.props.bucket.id);
   }
 
   render() {
     const { name, id, tasks } = this.props.bucket;
     const { editable } = this.state;
-    const taskList = tasks.map((task) => <Task />);
+    const taskList = tasks.map((task, index) => <Task task={task} key={index} bucketId={id} />);
     return (
       <StyledBucket>
         <EditContainer className="bucket-header" 
@@ -80,7 +75,7 @@ class Bucket extends Component {
           <BucketOptions onRemove={this.removeBucket}
             addTask={this.addTask}
             editBucket={this.toggleEditable} />
-          <div className="bucket-task-list">{taskList}</div>
+          <div className="bucket-tasklist">{taskList}</div>
         </BucketBody>
       </StyledBucket>
     )
