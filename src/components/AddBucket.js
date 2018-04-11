@@ -6,7 +6,10 @@ const AddBucketContainer = BucketContainer.extend`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px dashed #ededed;
+	border: 1px dashed ${(props) => {
+		console.log(props)
+		return props.theme.green
+	}};
 	color: #ededed;
 
 	:hover {
@@ -18,9 +21,9 @@ const AddIcon = styled.i`
 	font-size: 8em;
 `;
 
-export default ({ onClick }) => {
+export default ({ onClick }, {theme}) => {
 	return (
-		<AddBucketContainer className="add-bucket pointer" onClick={onClick}>
+		<AddBucketContainer className="add-bucket pointer" onClick={onClick} theme={theme}>
 			<AddIcon className="material-icons">add</AddIcon>
 		</AddBucketContainer>
 	);

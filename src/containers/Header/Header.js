@@ -11,9 +11,9 @@ const Header = styled.header.attrs({
   color: white;
 `;
 
-export default () => {
+export default (props, context) => {
   return (
-    <Header>
+    <Header theme={context.theme}>
       <Logo />
       <h1 className="App-title">Welcome to React</h1>
     </Header>

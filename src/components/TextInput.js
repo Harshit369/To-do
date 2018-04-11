@@ -16,6 +16,6 @@ const Input = styled.input.attrs({
 
 export default (props) => {
   return  (
-    <Input {...props} />
+    <Input {...props} theme={this.context.theme} />
   )
 }

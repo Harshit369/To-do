@@ -64,7 +64,7 @@ class Task extends Component {
     }
 
     return (
-      <TaskDiv>
+      <TaskDiv theme={this.context.theme}>
         {getTask()}
       </TaskDiv>
     );

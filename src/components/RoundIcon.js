@@ -17,9 +17,9 @@ const IconWrapper = styled.div.attrs({
   }
 `;
 
-export default (props) => {
+export default (props, {theme}) => {
   return (
-    <IconWrapper {...props}>
+    <IconWrapper {...props} theme={theme} >
       <i className='icon material-icons '>{props.icon}</i>
     </IconWrapper>
   );

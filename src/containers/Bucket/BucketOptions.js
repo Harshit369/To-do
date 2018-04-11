@@ -21,9 +21,9 @@ const ButtonsWrapper = styled.div`
   }
 `
 
-export default ({ onRemove, addTask, editBucket }) => {
+export default ({ onRemove, addTask, editBucket }, {theme}) => {
   return (
-    <ButtonsWrapper>
+    <ButtonsWrapper theme={theme}>
       <RoundIcon className="bucketOption" onClick={addTask} icon="add" />
       <RoundIcon className="bucketOption" onClick={editBucket} icon="mode_edit" />
       <RoundIcon className="bucketOption last" onClick={onRemove} icon="delete" />
