@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const Input = styled.input.attrs({
+const StyledInput = styled.input.attrs({
   type: 'text',
 })`
   padding: 8px;
@@ -10,12 +11,18 @@ const Input = styled.input.attrs({
   outline: none;
   height: 100%;
   border: 0px;
-  color: #888;
+  color: ${({theme}) => theme.textLight};
   font-size: inherit;
 `;
 
-export default (props) => {
-  return  (
-    <Input {...props} theme={this.context.theme} />
-  )
+const Input = (props, {theme}) => {
+  return (
+    <StyledInput {...props} theme={theme} />
+  );
 }
+
+Input.contextTypes = {
+  theme: PropTypes.object
+}
+
+export default Input;

@@ -11,6 +11,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: #2d3142;
+  border-color: #2d3142;
 }
 
 .App-title {

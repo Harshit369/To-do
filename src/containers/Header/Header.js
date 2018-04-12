@@ -1,21 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
+import PropTypes from 'prop-types';
 
-const Header = styled.header.attrs({
+const HeadWrapper = styled.header.attrs({
   className: 'app-header'
 })`
-  background-color: #222;
+  background-color: ${({theme}) => theme.dark};
   height: 150px;
   padding: 20px;
-  color: white;
+  color: ${({ theme }) => theme.light};
 `;
 
-export default (props, context) => {
+const Header = (props, { theme }) => {
   return (
-    <Header theme={context.theme}>
+    <HeadWrapper theme={theme}>
       <Logo />
       <h1 className="App-title">Welcome to React</h1>
-    </Header>
+    </HeadWrapper>
   );
 }
+
+Header.contextTypes = {
+  theme: PropTypes.object
+}
+
+export default Header;

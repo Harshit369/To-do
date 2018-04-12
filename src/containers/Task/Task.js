@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { EditContainer } from '../../components';
 import { BucketActions } from '../../actions';
+import  Prototypes from 'prop-types';
 
 const TaskDiv = styled.div`
   width: 100%;
@@ -72,6 +73,10 @@ class Task extends Component {
 
   componentDidMount() {}
 
+}
+
+Task.contextTypes = {
+  theme: Prototypes.object
 }
 
 export default Task;

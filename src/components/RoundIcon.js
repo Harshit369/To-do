@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const IconWrapper = styled.div.attrs({
   style: props => props.style
@@ -10,17 +11,18 @@ const IconWrapper = styled.div.attrs({
   align-items: center;
   height: 40px;
   width: 40px;
-  border: 1px solid #ededed;
-
-  .icon {
-    color #ededed;
-  }
+  border: 1px solid;
 `;
 
-export default (props, {theme}) => {
+const RoundIcon = (props, { theme }) => {
   return (
     <IconWrapper {...props} theme={theme} >
       <i className='icon material-icons '>{props.icon}</i>
     </IconWrapper>
   );
 }
+
+RoundIcon.contextTypes = {
+  theme: PropTypes.object
+}
+export default RoundIcon

@@ -15,13 +15,16 @@ const red2 = '#811d15';
 export const normal = {
   green,
   red,
-  normal: neutral,
-  light: neutral0,
+  textRegular: neutral,
+  textLight: neutral0,
   white,
   black,
+  dark: black,
+  light: white,
   primary: green,
   warning: red,
-  success: green
+  success: green,
+  alert: red,
 }
 
 export const dark = {...normal}

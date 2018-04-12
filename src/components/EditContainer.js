@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextInput from  './TextInput';
 import RoundIcon from './RoundIcon';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div.attrs({
   className: 'edit-container-wrapper'
@@ -65,6 +66,7 @@ class EditContainer extends Component {
 
   getChildren = () => {
     const { editable } = this.props;
+    const { theme } = this.context;
     const { newValue, oldValue } = this.state;
     if (editable) {
       return (
@@ -74,10 +76,10 @@ class EditContainer extends Component {
             name="editContainerInput" 
             onChange={(e) => this.onChange(e.target.value)}  />
           <RoundIcon 
-            style={updateButtonsStyle} 
+            style={{...updateButtonsStyle, color: theme.success}}
             icon="clear" onClick={this.onCancel} />
           <RoundIcon 
-            style={updateButtonsStyle} 
+            style={{...updateButtonsStyle, color: theme.alert}} 
             icon="done" onClick={this.onSave} />
         </InputContainer>
       );
@@ -92,6 +94,10 @@ class EditContainer extends Component {
       </Wrapper>
     );
   }
+}
+
+EditContainer.contextTypes = {
+  theme: PropTypes.object
 }
 
 export default EditContainer;
