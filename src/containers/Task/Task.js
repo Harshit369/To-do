@@ -7,10 +7,31 @@ import  Prototypes from 'prop-types';
 const TaskDiv = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededed;
 
   p {
+    text-align: left;
     padding: 0 8px;
+    flex-shrink: 1px;
+    word-break: break-word;
+    margin: 12px 0px;
+  }
+`;
+
+const TaskActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 40px;
+
+  i {
+    font-size: inherit;
+    cursor: pointer;
+    &.remove {
+      color: ${({ theme }) => theme.alert}
+    }
   }
 `;
 
@@ -40,6 +61,12 @@ class Task extends Component {
     });
   }
 
+  editTask = () => {
+    this.setState({
+      editable: true
+    });
+  }
+
   deleteTask = () => {
     BucketActions.deleteTask(this.props.bucketId, this.props.task);
   }
@@ -60,7 +87,19 @@ class Task extends Component {
         );
       }
       return [
-        <p>{title}</p>
+        <p key="0">{title}</p>,
+        <TaskActions key="1" theme={this.context.theme}>
+          <i className="material-icons icon"
+            onClick={this.editTask}
+          >
+            edit
+          </i>
+          <i className="material-icons icon remove"
+            onClick={this.deleteTask}
+          >
+            remove_circle
+          </i>
+        </TaskActions>
       ];
     }
 

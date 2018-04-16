@@ -8,6 +8,6 @@ export default styled.div.attrs({
   height: 450px;
   max-width: 30%;
   min-width: 300px;
-  margin-right: 16px;
+  margin-right: 32px;
   margin-bottom: 16px;
 `;
