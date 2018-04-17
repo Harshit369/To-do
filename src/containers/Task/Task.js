@@ -48,7 +48,8 @@ class Task extends Component {
   updateTask = (title) => {
     BucketActions.updateTask(this.props.bucketId, { ...this.props.task, title })
     this.setState({
-      editable: false
+      editable: false,
+      newTask: false
     });
   }
 

@@ -17,6 +17,10 @@ class Theme extends EventEmitter {
   getTheme() {
     return themes[this.currentTheme];
   }
+
+  getThemeName() {
+    return this.currentTheme;
+  }
 }
 
 export default new Theme();

@@ -13,6 +13,7 @@ const StyledInput = styled.input.attrs({
   border: 0px;
   color: ${({theme}) => theme.textLight};
   font-size: inherit;
+  background-color: transparent;
 `;
 
 const Input = (props, {theme}) => {

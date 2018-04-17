@@ -31,8 +31,9 @@ const updateButtonsStyle = {
 
 class EditContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
+
   state = {
     newValue: this.props.value,
     oldValue: this.props.value

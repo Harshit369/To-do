@@ -12,6 +12,10 @@ const red0 = '#ffa084';
 const red = '#f33502';
 const red2 = '#811d15';
 
+const blue0 = '#6596ef';
+const blue = '#2956b2';
+const blue2 = '#190354';
+
 export const normal = {
   green,
   red,
@@ -25,7 +29,16 @@ export const normal = {
   warning: red,
   success: green,
   alert: red,
+  appBackground: white,
+  headerColor: black
 }
 
-export const dark = {...normal}
+export const dark = {
+  ...normal,
+  textRegular: white,
+  primary: blue,
+  success: blue,
+  appBackground: black,
+  headerColor: neutral
+}
 

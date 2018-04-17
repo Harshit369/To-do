@@ -8,5 +8,6 @@ export default styled.img.attrs({
   className: 'app-logo'
 })`
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 50px;
+  display: inline-block;
 `;
