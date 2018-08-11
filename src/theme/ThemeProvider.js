@@ -29,7 +29,7 @@ const ThemeProvider = (ComponentToWrap) => {
     }
 
     render () {
-      return <ComponentToWrap />;
+      return <ComponentToWrap {...this.props} />;
     }
   }
 }
