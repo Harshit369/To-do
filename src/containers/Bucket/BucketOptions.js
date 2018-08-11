@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import {Themed} from '../../theme';
 import { RoundIcon } from '../../components'
 
-const ButtonsWrapper = styled.div`
+const ButtonsWrapper = Themed(styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,20 +26,16 @@ const ButtonsWrapper = styled.div`
       color: ${({ theme }) => theme.alert}
     }
   }
-`
+`);
 
-const BucketOptions = ({ onRemove, addTask, editBucket }, { theme }) => {
+const BucketOptions = ({ onRemove, addTask, editBucket }) => {
   return (
-    <ButtonsWrapper theme={theme}>
+    <ButtonsWrapper>
       <RoundIcon className="bucketOption" onClick={addTask} icon="add" />
       <RoundIcon className="bucketOption" onClick={editBucket} icon="mode_edit" />
       <RoundIcon className="bucketOption last alert" onClick={onRemove} icon="delete" />
     </ButtonsWrapper>
   )
-}
-
-BucketOptions.contextTypes = {
-  theme: PropTypes.object
 }
 
 export default BucketOptions

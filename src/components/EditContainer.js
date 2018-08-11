@@ -2,20 +2,16 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextInput from  './TextInput';
 import RoundIcon from './RoundIcon';
-import PropTypes from 'prop-types';
+import {Themed} from '../theme';
 
-const Wrapper = styled.div.attrs({
-  className: 'edit-container-wrapper'
-})`
+const Wrapper = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
 `;
 
-const InputContainer = styled.div.attrs({
-  className: 'edit-container-input-wrapper'
-})`
+const InputContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -66,8 +62,7 @@ class EditContainer extends Component {
   }
 
   getChildren = () => {
-    const { editable } = this.props;
-    const { theme } = this.context;
+    const { editable, theme } = this.props;
     const { newValue, oldValue } = this.state;
     if (editable) {
       return (
@@ -97,8 +92,4 @@ class EditContainer extends Component {
   }
 }
 
-EditContainer.contextTypes = {
-  theme: PropTypes.object
-}
-
-export default EditContainer;
+export default Themed(EditContainer);

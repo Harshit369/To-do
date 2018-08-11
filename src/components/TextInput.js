@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import {Themed} from '../theme';
 
 const StyledInput = styled.input.attrs({
   type: 'text',
@@ -16,14 +16,10 @@ const StyledInput = styled.input.attrs({
   background-color: transparent;
 `;
 
-const Input = (props, {theme}) => {
+const Input = (props) => {
   return (
-    <StyledInput {...props} theme={theme} />
+    <StyledInput {...props} />
   );
 }
 
-Input.contextTypes = {
-  theme: PropTypes.object
-}
-
-export default Input;
+export default Themed(Input);

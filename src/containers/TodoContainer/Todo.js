@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import { BucketActions } from '../../actions';
 import { BucketStore } from '../../stores'
 import Bucket from '../Bucket';
 import { AddBucket } from '../../components';
+import {Themed} from '../../theme';
 
-const TodoContainer = styled.div.attrs({
-  className: 'todo-container'
-})`
+const TodoContainer = Themed(styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -18,7 +16,7 @@ const TodoContainer = styled.div.attrs({
   overflow-y: scroll;
   background-color: ${({ theme }) => theme.appBackground};
   color: ${({ theme }) => theme.textRegular};
-`;
+`);
 
 class Todo extends Component {
   constructor(props) {
@@ -36,7 +34,7 @@ class Todo extends Component {
   render() {
     const buckets = this.state.buckets.map((bucket, index) => <Bucket bucket={bucket} key={index} />);
     return (
-      <TodoContainer theme={this.context.theme}>
+      <TodoContainer>
         {buckets}
         <AddBucket onClick={this.addBucket} />
       </TodoContainer>
@@ -50,10 +48,6 @@ class Todo extends Component {
       })
     })
   }
-}
-
-Todo.contextTypes = {
-  theme: PropTypes.object
 }
 
 export default Todo;

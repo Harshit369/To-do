@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import {Themed} from '../theme';
 
 const IconWrapper = styled.div.attrs({
   style: props => props.style
@@ -14,15 +14,12 @@ const IconWrapper = styled.div.attrs({
   border: 1px solid;
 `;
 
-const RoundIcon = (props, { theme }) => {
+const RoundIcon = (props) => {
   return (
-    <IconWrapper {...props} theme={theme} >
+    <IconWrapper {...props} >
       <i className='icon material-icons '>{props.icon}</i>
     </IconWrapper>
   );
 }
 
-RoundIcon.contextTypes = {
-  theme: PropTypes.object
-}
-export default RoundIcon
+export default Themed(RoundIcon)

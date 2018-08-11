@@ -1,2 +1,3 @@
-export { default as ThemeProvider} from './ThemeProvider.js'
-export { default as Theme } from './theme.js'
+export { default as ThemeProvider} from './ThemeProvider'
+export { default as Theme } from './theme'
+export { default as Themed } from './Themed'

@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { EditContainer } from '../../components';
 import { BucketActions } from '../../actions';
 import  Prototypes from 'prop-types';
+import {Themed} from '../../theme';
 
-const TaskDiv = styled.div`
+const TaskDiv = Themed(styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -17,9 +18,9 @@ const TaskDiv = styled.div`
     word-break: break-word;
     margin: 12px 0px;
   }
-`;
+`);
 
-const TaskActions = styled.div`
+const TaskActions = Themed(styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +34,7 @@ const TaskActions = styled.div`
       color: ${({ theme }) => theme.alert}
     }
   }
-`;
+`);
 
 class Task extends Component {
   state = {
@@ -89,7 +90,7 @@ class Task extends Component {
       }
       return [
         <p key="0">{title}</p>,
-        <TaskActions key="1" theme={this.context.theme}>
+        <TaskActions key="1">
           <i className="material-icons icon"
             onClick={this.editTask}
           >
@@ -105,7 +106,7 @@ class Task extends Component {
     }
 
     return (
-      <TaskDiv theme={this.context.theme}>
+      <TaskDiv>
         {getTask()}
       </TaskDiv>
     );

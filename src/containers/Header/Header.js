@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
-import PropTypes from 'prop-types';
+import {Themed} from '../../theme';
 
-const HeadWrapper = styled.header.attrs({
+const HeadWrapper = Themed(styled.header.attrs({
   className: 'app-header'
 })`
   display: flex;
@@ -16,20 +16,16 @@ const HeadWrapper = styled.header.attrs({
   h1 {
     margin: 8px;
   }
-`;
+`);
 
-const Header = (props, { theme }) => {
+const Header = () => {
   return (
-    <HeadWrapper theme={theme}>
+    <HeadWrapper>
       <Logo />
       <h1 className="App-title">Welcome to Todo Flux</h1>
       <ThemeToggle></ThemeToggle>
     </HeadWrapper>
   );
-}
-
-Header.contextTypes = {
-  theme: PropTypes.object
 }
 
 export default Header;
